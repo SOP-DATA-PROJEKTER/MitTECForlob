@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace Logic.Interfaces.Table_Interfaces
 {
-    public interface INotes
+    public interface INotes : IGeneric<Notes>
     {
-        public Task<Notes> CreateNotes(Notes notes);
         public Task<Notes> GetById(int id);
-        public Task<Notes> UpdateNotes(Notes notes);
-        public Task<bool> DeleteNotes(int id);
     }
 }
