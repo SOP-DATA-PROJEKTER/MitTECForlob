@@ -1,0 +1,6 @@
+@MitTecForlob.Server_HostAddress = http://localhost:5200
+
+GET {{MitTecForlob.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
