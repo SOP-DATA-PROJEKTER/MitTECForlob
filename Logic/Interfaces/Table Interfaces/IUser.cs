@@ -13,6 +13,5 @@ namespace Logic.Interfaces
         public Task<User> GetById(int id);
         public Task<List<User>> GetListOfUsers();
         public Task<bool> CheckLogin(LoginObject loginObject);
-        public Task<User> UserLogin(LoginObject loginObject);
     }
 }

@@ -10,9 +10,4 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models Logic\Cryptography\" />
-    <Folder Include="Models Logic\Table Repo\" />
-  </ItemGroup>
-
 </Project>
