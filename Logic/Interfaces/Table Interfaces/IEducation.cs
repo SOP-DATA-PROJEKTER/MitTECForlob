@@ -9,8 +9,11 @@ namespace Logic.Interfaces
 {
     public interface IEducation
     {
+        public Task<Education> CreateEducation(Education education);
         public Task<Education> GetByEduationName(string educationname);
         public Task<Education> GetById(int id);
         public Task<List<Education>> GetAllEducations();
+        public Task<Education> UpdateEducation(Education education);
+        public Task<Education> DeleteEducation(int id);
     }
 }
