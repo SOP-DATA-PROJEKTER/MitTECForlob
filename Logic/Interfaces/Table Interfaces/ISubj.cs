@@ -9,7 +9,7 @@ namespace Logic.Interfaces
 {
     public interface ISubj
     {
-        public Task<Subj> GetBySubjectName(string subjectname);
+        public Task<Subj> GetBySubjName(string subjectname);
         public Task<Subj> GetById(int id);
         public Task<List<Subj>> GetAllSubj();
 
