@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Logic.Models_Logic.Table_Repo
 {
-    public class ProgressRepo : IProgress
+    public class ProgressRepo : GenericRepo<Progress>,IProgress
     {
         DBcontext context;
-        public ProgressRepo(DBcontext c)
+        public ProgressRepo(DBcontext c) : base(c)
         {
             context = c;
         } // Dependency Injection - DI

@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Logic.Models_Logic.Table_Repo
 {
-    public class SpecsRepo : ISpecs
+    public class SpecsRepo : GenericRepo<Specs>,ISpecs
     {
         DBcontext context;
-        public SpecsRepo(DBcontext c)
+        public SpecsRepo(DBcontext c) : base(c)
         {
             context = c;
         } // Dependency Injection - DI

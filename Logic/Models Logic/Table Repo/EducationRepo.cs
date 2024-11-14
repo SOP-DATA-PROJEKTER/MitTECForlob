@@ -1,4 +1,5 @@
 ﻿using Logic.Interfaces;
+using Logic.Interfaces.Table_Interfaces;
 using Logic.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Logic.Models_Logic.Table_Repo
 {
-    public class EducationRepo :IEducation
+    public class EducationRepo : GenericRepo<Education>,IEducation
     {
         DBcontext context;
-        public EducationRepo(DBcontext c)
+        public EducationRepo(DBcontext c) : base(c)
         {
             context = c;
         } // Dependency Injection - DI
