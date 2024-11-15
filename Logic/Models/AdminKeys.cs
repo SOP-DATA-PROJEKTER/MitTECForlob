@@ -5,19 +5,15 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Logic.Models
 {
-    public class Notes
+    public class AdminKeys
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Note {  get; set; }
-        public virtual Progress? Progress { get; set; }
-        [AllowNull]
-        public virtual Subj? Subj { get; set; } = null; 
-        public virtual User? User { get; set; }  
+        public string Key { get; set; }
+        public virtual User? User { get; set; }
     }
 }

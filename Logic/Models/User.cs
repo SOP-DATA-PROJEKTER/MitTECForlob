@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Logic.Models
 {
@@ -17,7 +18,8 @@ namespace Logic.Models
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
-        public string AdminKey { get; set; }
+        [AllowNull]
+        public virtual AdminKeys? AdminKeys { get; set; }=null;
         public virtual Education? Education { get; set; }
         public virtual Specs? Specs { get; set; }
         public virtual Progress? Progress { get; set; }
