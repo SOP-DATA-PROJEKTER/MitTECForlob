@@ -15,7 +15,7 @@ namespace Logic.Models
         public int Id { get; set; }
         public string SpecsName { get; set; }
         public string Description {  get; set; }
-        public List<Progress>? Progress { get; set; } = new List<Progress>();
+        public List<Course>? Progress { get; set; } = new List<Course>();
         public DateTime? EndTime { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace Logic
             public DbSet<AdminKeys> AdminKeys { get; set; }
             public DbSet<Education> Education { get; set; }
             public DbSet<Notes> Notes { get; set; }
-            public DbSet<Progress> Progress { get; set; }
+            public DbSet<Course> Progress { get; set; }
             public DbSet<User> User { get; set; }
             public DbSet<Specs> Specs { get; set; }
             public DbSet<Subj> Subj { get; set; }

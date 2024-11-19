@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Models
 {
-    public class Progress
+    public class Course
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

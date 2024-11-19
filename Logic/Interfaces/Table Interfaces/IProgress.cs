@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Logic.Interfaces
 {
-    public interface IProgress : IGeneric<Progress>
+    public interface IProgress : IGeneric<Course>
     {
-        public Task<Progress> GetByProgressName(string progressname);
-        public Task<Progress> GetById(int id);
-        public Task<List<Progress>> GetAllProgress();
+        public Task<Course> GetByProgressName(string progressname);
+        public Task<Course> GetById(int id);
+        public Task<List<Course>> GetAllProgress();
     }
 }
