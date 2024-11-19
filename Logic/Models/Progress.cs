@@ -13,7 +13,6 @@ namespace Logic.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public virtual Specs? Specs { get; set; }
         public string ProgressName { get; set; }
         public List<Subj> SubjectList {  get; set; } = new List<Subj>();
     }

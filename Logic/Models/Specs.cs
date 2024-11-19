@@ -13,7 +13,6 @@ namespace Logic.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public virtual Education? Education { get; set; }
         public string SpecsName { get; set; }
         public string Description {  get; set; }
         public List<Progress>? Progress { get; set; } = new List<Progress>();

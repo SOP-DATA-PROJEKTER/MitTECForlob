@@ -14,9 +14,8 @@ namespace Logic.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public virtual Progress? Progress { get; set; }
         public string SubjectName { get; set; }
         public string Description { get; set; }
-        public int Duration { get; set; }
+        public DateTime Duration { get; set; }
     }
 }
