@@ -16,8 +16,5 @@ namespace Logic.Models
         public int Id { get; set; }
         public string Note {  get; set; }
         public virtual Progress? Progress { get; set; }
-        [AllowNull]
-        public virtual Subj? Subj { get; set; } = null; 
-        public virtual User? User { get; set; }  
     }
 }
