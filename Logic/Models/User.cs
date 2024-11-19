@@ -22,7 +22,7 @@ namespace Logic.Models
         public virtual AdminKeys? AdminKeys { get; set; }=null;
         public virtual Education? Education { get; set; }
         public virtual Specs? Specs { get; set; }
-        public virtual Course? Progress { get; set; }
+        public virtual Course? Course { get; set; }
         public virtual List<Notes>? Notes { get; set; }
     }
 }
