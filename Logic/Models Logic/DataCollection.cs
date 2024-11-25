@@ -1,0 +1,49 @@
+﻿using Logic.Interfaces;
+using Logic.Models_Logic.Table_Repo;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Logic.Models_Logic
+{
+    public class DataCollection : IDataCollection
+    {
+        private readonly IEducation education;
+        private readonly ICourse course;
+        private readonly ISpecs specs;
+        private readonly ISubj subj;
+        private readonly IUser user;
+
+        public DataCollection(DBcontext Context)
+        {
+            education = new EducationRepo(Context);
+            course = new CourseRepo(Context);
+            specs = new SpecsRepo(Context);
+            subj = new SubjRepo(Context);
+            user = new UserRepo(Context);
+        }
+        public IEducation Education
+        {
+            get { return education; }
+        }
+        public ICourse Course
+        {
+            get { return course; }
+        }
+        public ISpecs Specs
+        {
+            get { return specs; }
+        }
+        public ISubj Subj
+        {
+            get { return subj; }
+        }
+        public IUser User
+        {
+            get { return user; }
+        }
+    }
+}
