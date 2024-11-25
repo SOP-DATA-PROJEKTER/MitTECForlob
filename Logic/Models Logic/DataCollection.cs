@@ -1,4 +1,5 @@
 ﻿using Logic.Interfaces;
+using Logic.Interfaces.Table_Interfaces;
 using Logic.Models_Logic.Table_Repo;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Logic.Models_Logic
         private readonly ISpecs specs;
         private readonly ISubj subj;
         private readonly IUser user;
+        private readonly IAdminKeys adminKeys;
 
         public DataCollection(DBcontext Context)
         {
@@ -24,6 +26,7 @@ namespace Logic.Models_Logic
             specs = new SpecsRepo(Context);
             subj = new SubjRepo(Context);
             user = new UserRepo(Context);
+            adminKeys = new AdminKeysRepo(Context);
         }
         public IEducation Education
         {
@@ -44,6 +47,10 @@ namespace Logic.Models_Logic
         public IUser User
         {
             get { return user; }
+        }
+        public IAdminKeys AdminKeys
+        {
+            get { return adminKeys; }
         }
     }
 }

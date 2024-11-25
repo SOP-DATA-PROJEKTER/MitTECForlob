@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic.Interfaces.Table_Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,6 @@ namespace Logic.Interfaces
         public ISpecs Specs { get; }
         public ISubj Subj { get; }
         public IUser User { get; }
-
+        public IAdminKeys AdminKeys { get; }
     }
 }
