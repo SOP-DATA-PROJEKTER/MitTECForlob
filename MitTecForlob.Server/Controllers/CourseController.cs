@@ -2,11 +2,7 @@
 
 namespace MitTecForlob.Server.Controllers
 {
-    public class CourseController : Controller
+    public class CourseController : ControllerBase
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
     }
 }

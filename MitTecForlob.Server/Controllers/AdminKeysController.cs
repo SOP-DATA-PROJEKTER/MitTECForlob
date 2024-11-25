@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Logic.Interfaces;
+using Logic.Interfaces.Table_Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MitTecForlob.Server.Controllers
 {
-    public class AdminKeysController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AdminKeysController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly IAdminKeys _adminKeys;
+        private readonly IUser _user;
+        private readonly IDataCollection collection;
+        public AdminKeysController(IDataCollection _context)
         {
-            return View();
+            _adminKeys = _context.AdminKeys;
+            _user = _context.User;
+            collection = _context;
         }
     }
 }
