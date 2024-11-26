@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Logic.Models
 {
@@ -15,7 +16,8 @@ namespace Logic.Models
         public int Id { get; set; }
         public string SpecsName { get; set; }
         public string Description {  get; set; }
-        public List<Course>? Courses { get; set; } = new List<Course>();
+        [AllowNull]
+        public List<Course>? Courses { get; set; }
         public DateTime? EndTime { get; set; }
     }
 }

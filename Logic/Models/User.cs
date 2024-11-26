@@ -19,10 +19,14 @@ namespace Logic.Models
         [Required]
         public string Password { get; set; }
         [AllowNull]
-        public virtual AdminKeys? AdminKeys { get; set; }=null;
+        public virtual AdminKeys? AdminKeys { get; set; }
+        [AllowNull]
         public virtual Education? Education { get; set; }
+        [AllowNull]
         public virtual Specs? Specs { get; set; }
+        [AllowNull]
         public virtual Course? Course { get; set; }
+        [AllowNull]
         public virtual List<Notes>? Notes { get; set; }
     }
 }

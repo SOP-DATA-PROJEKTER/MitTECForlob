@@ -10,8 +10,7 @@ namespace Logic.Interfaces
 {
     public interface ICourse : IGeneric<Course>
     {
-        public Task<Course> GetByProgressName(string progressname);
         public Task<Course> GetById(int id);
-        public Task<List<Course>> GetAllProgress();
+        public Task<List<Course>> GetAllCourses();
     }
 }
