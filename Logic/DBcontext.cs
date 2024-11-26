@@ -14,8 +14,11 @@ namespace Logic
             public DBcontext(DbContextOptions<DBcontext> options) : base(options)
             {
             }
-
-            public DbSet<AdminKeys> AdminKeys { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=MitTECForloeb;Trusted_Connection=True;");
+        }
+        public DbSet<AdminKeys> AdminKeys { get; set; }
             public DbSet<Education> Education { get; set; }
             public DbSet<Notes> Notes { get; set; }
             public DbSet<Course> Progress { get; set; }
