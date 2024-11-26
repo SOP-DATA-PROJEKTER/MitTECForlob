@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Logic.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialStartup : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -59,19 +59,19 @@ namespace Logic.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Progress",
+                name: "Course",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProgressName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CourseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SpecsId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Progress", x => x.Id);
+                    table.PrimaryKey("PK_Course", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Progress_Specs_SpecsId",
+                        name: "FK_Course_Specs_SpecsId",
                         column: x => x.SpecsId,
                         principalTable: "Specs",
                         principalColumn: "Id");
@@ -92,9 +92,9 @@ namespace Logic.Migrations
                 {
                     table.PrimaryKey("PK_Subj", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Subj_Progress_CourseId",
+                        name: "FK_Subj_Course_CourseId",
                         column: x => x.CourseId,
-                        principalTable: "Progress",
+                        principalTable: "Course",
                         principalColumn: "Id");
                 });
 
@@ -120,14 +120,14 @@ namespace Logic.Migrations
                         principalTable: "AdminKeys",
                         principalColumn: "Id");
                     table.ForeignKey(
+                        name: "FK_User_Course_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Course",
+                        principalColumn: "Id");
+                    table.ForeignKey(
                         name: "FK_User_Education_EducationId",
                         column: x => x.EducationId,
                         principalTable: "Education",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_User_Progress_CourseId",
-                        column: x => x.CourseId,
-                        principalTable: "Progress",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_User_Specs_SpecsId",
@@ -150,9 +150,9 @@ namespace Logic.Migrations
                 {
                     table.PrimaryKey("PK_Notes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Notes_Progress_CourseId",
+                        name: "FK_Notes_Course_CourseId",
                         column: x => x.CourseId,
-                        principalTable: "Progress",
+                        principalTable: "Course",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Notes_User_UserId",
@@ -160,6 +160,11 @@ namespace Logic.Migrations
                         principalTable: "User",
                         principalColumn: "Id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Course_SpecsId",
+                table: "Course",
+                column: "SpecsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Notes_CourseId",
@@ -170,11 +175,6 @@ namespace Logic.Migrations
                 name: "IX_Notes_UserId",
                 table: "Notes",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Progress_SpecsId",
-                table: "Progress",
-                column: "SpecsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Specs_EducationId",
@@ -223,7 +223,7 @@ namespace Logic.Migrations
                 name: "AdminKeys");
 
             migrationBuilder.DropTable(
-                name: "Progress");
+                name: "Course");
 
             migrationBuilder.DropTable(
                 name: "Specs");

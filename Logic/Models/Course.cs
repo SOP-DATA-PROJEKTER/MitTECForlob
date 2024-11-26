@@ -14,7 +14,7 @@ namespace Logic.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string ProgressName { get; set; }
+        public string CourseName { get; set; }
         [AllowNull]
         public List<Subj> SubjectList {  get; set; } = new List<Subj>();
     }

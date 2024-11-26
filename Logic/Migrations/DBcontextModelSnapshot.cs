@@ -47,7 +47,7 @@ namespace Logic.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ProgressName")
+                    b.Property<string>("CourseName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -58,7 +58,7 @@ namespace Logic.Migrations
 
                     b.HasIndex("SpecsId");
 
-                    b.ToTable("Progress");
+                    b.ToTable("Course");
                 });
 
             modelBuilder.Entity("Logic.Models.Education", b =>

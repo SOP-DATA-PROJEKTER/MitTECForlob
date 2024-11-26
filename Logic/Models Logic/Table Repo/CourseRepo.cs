@@ -18,13 +18,13 @@ namespace Logic.Models_Logic.Table_Repo
         } // Dependency Injection - DI
         public async Task<Course> GetById(int id)
         {
-            return await context.Progress.FirstOrDefaultAsync(Progress => Progress.Id == id);
+            return await context.Course.FirstOrDefaultAsync(Progress => Progress.Id == id);
         }
         public async Task<List<Course>> GetAllCourses()
         {
             try
             {
-                return await context.Progress.ToListAsync();
+                return await context.Course.ToListAsync();
             }
             catch (Exception ex)
             {
