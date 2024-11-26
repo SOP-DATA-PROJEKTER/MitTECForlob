@@ -14,6 +14,7 @@ namespace Logic.Interfaces
         public ISpecs Specs { get; }
         public ISubj Subj { get; }
         public IUser User { get; }
+        public INotes Notes { get; }
         public IAdminKeys AdminKeys { get; }
     }
 }

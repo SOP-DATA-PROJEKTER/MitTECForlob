@@ -16,6 +16,8 @@ namespace Logic.Models
         public int Id { get; set; }
         public string Note {  get; set; }
         [AllowNull]
+        public virtual User? User { get; set; }
+        [AllowNull]
         public virtual Course? Course { get; set; }
     }
 }
