@@ -15,7 +15,5 @@ namespace Logic.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Key { get; set; }
-        [AllowNull]
-        public virtual User? User { get; set; }
     }
 }

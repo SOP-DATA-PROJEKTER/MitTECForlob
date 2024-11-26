@@ -18,6 +18,7 @@ namespace Logic.Models_Logic
         private readonly ISubj subj;
         private readonly IUser user;
         private readonly IAdminKeys adminKeys;
+        private readonly INotes notes;
 
         public DataCollection(DBcontext Context)
         {
@@ -27,6 +28,7 @@ namespace Logic.Models_Logic
             subj = new SubjRepo(Context);
             user = new UserRepo(Context);
             adminKeys = new AdminKeysRepo(Context);
+            notes = new NotesRepo(Context);
         }
         public IEducation Education
         {
@@ -51,6 +53,10 @@ namespace Logic.Models_Logic
         public IAdminKeys AdminKeys
         {
             get { return adminKeys; }
+        }
+        public INotes Notes
+        {
+            get { return notes; }
         }
     }
 }
