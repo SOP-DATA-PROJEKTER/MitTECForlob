@@ -38,7 +38,26 @@ namespace MitTecForlob.Server.Controllers
                 }
 
             }
-            [HttpGet("{name}")]
+        [HttpGet("GetAllEducations")]
+        public async Task<List<Education>> GetAllEducations()
+        {
+            try
+            {
+                var education = await _education.GetAllEducations();
+                if (education == null)
+                {
+                    return null;
+                }
+                return education;
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+
+        }
+        [HttpGet("{name}")]
             public async Task<ActionResult<Education>> GetByEduationName(string educationname)
             {
                 try
@@ -58,7 +77,7 @@ namespace MitTecForlob.Server.Controllers
 
             }
         #endregion
-        #region POST Requests
+            #region POST Requests
         [HttpPost("CreateEducation")]
             public async Task<HttpStatusCode> CreateEducation(Education education)
             {

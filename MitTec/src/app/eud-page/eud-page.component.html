@@ -1,0 +1,12 @@
+<div *ngIf="educations.length > 0; else noData">
+    <!-- Loop through the educations and create containers -->
+    <div *ngFor="let education of educations" class="education-container">
+      <h2>{{ education.educationName }}</h2>
+    </div>
+  </div>
+  
+  <ng-template #noData>
+    <!-- Show this if there is no data -->
+    <p>No data available.</p>
+  </ng-template>
+  

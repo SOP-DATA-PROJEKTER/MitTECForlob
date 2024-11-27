@@ -1,0 +1,115 @@
+/* Background styling for the entire component */
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh; /* Ensures the background covers the entire viewport */
+    background-color: #aca8a8; /* Light gray background */
+}
+
+/* Style for the logo container */
+.logo {
+    margin-bottom: 50px; /* Adds space between the logo and the buttons */
+    width: 200px;        /* Increased width for a larger logo */
+    height: auto;        /* Maintains aspect ratio */
+    display: inline-block;
+}
+
+/* Ensure the SVG within the logo container fits correctly */
+.logo svg {
+    width: 100%;             /* Ensures the SVG fits within the .logo container */
+    height: auto;
+    fill: currentColor;      /* Uses the color of the parent element */
+    color: #5C2D91;          /* Sets the SVG color to purple */
+}
+
+/* Button group for EUD and EUX buttons */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style for the main buttons (EUD and EUX) */
+.main-button {
+    background-color: #5C2D91; /* Purple color */
+    color: white;
+    border: none;
+    padding: 25px 50px; /* Increased padding for larger buttons */
+    margin: 20px 0;     /* Adds more space between the two buttons */
+    border-radius: 10px;
+    font-size: 20px;    /* Increases font size for larger buttons */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; /* Ensures shine effect stays within the button */
+}
+
+/* Shine effect overlay for main buttons */
+.main-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%; /* Starts off-screen to the left */
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4); /* Semi-transparent white for shine */
+    transform: skewX(-45deg); /* Creates a skewed shine effect */
+    transition: all 0.4s ease; /* Duration of the shine animation */
+    opacity: 0; /* Invisible initially */
+}
+
+/* Animate the shine effect on hover for main buttons */
+.main-button:hover::before {
+    left: 100%; /* Moves the shine from left to right */
+    opacity: 1; /* Becomes visible only on hover */
+}
+
+/* Login button styling, positioned further down */
+.login-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px; /* Adds more space to position this button lower on the page */
+}
+
+/* Style for the login button */
+.login-button {
+    background-color: #5C2D91; /* Purple color */
+    color: white;
+    border: none;
+    padding: 25px 50px; /* Increased padding for a larger login button */
+    border-radius: 10px;
+    font-size: 20px; /* Increases font size for consistency */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; /* Ensures shine effect stays within the button */
+}
+
+/* Shine effect overlay for login button */
+.login-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%; /* Starts off-screen to the left */
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4); /* Semi-transparent white for shine */
+    transform: skewX(-45deg); /* Creates a skewed shine effect */
+    transition: all 0.4s ease; /* Duration of the shine animation */
+    opacity: 0; /* Invisible initially */
+}
+
+/* Animate the shine effect on hover for login button */
+.login-button:hover::before {
+    left: 100%; /* Moves the shine from left to right */
+    opacity: 1; /* Becomes visible only on hover */
+}
+
+
+.mit-tec-forlob {
+    text-align: center;
+    margin: 20px 0; /* Adjust spacing above and below */
+    font-size: 24px; /* Adjust font size */
+    color: #ffffff; /* Match the purple color of the buttons */
+    font-weight: bold;
+}
