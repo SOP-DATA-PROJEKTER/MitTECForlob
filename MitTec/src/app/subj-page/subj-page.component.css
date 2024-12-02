@@ -1,0 +1,101 @@
+/* Global Reset for Margin and Padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styles - Center content horizontally and vertically */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;  /* Centers content horizontally */
+    align-items: center;  /* Centers content vertically */
+    font-family: 'Arial', sans-serif;
+    background-color: #aca8ac;  /* Background color */
+    color: #333;  /* Text color */
+  }
+  
+  /* Container to Center the Content and apply the purple background */
+  .subj-container {
+    background-color: #5C2D91;  /* Purple background for the content container */
+    padding: 30px;
+    margin: 50px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;  /* Stack title and grid vertically */
+    align-items: center;  /* Center the child elements horizontally */
+  }
+  
+  /* Title Styles for Heading */
+  .subj-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;  /* Add space between the title and grid */
+    color: #fff;
+    text-align: center;  /* Center the title */
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  /* Grid Layout for Subject Cards */
+  .subject-card-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  /* 5 cards per row */
+    gap: 20px;  /* Space between the cards */
+    justify-items: center;  /* Center cards inside each grid cell */
+    width: 100%;  /* Ensure the grid spans across the container */
+  }
+  
+  /* Subject Card - Styling and Hover Effects */
+  .subject-card {
+    background-color: #27232c;  /* Dark background for the cards */
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;  /* Make the card take up the full width of the grid cell */
+    max-width: 250px;  /* Limit the card's width */
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #fff;
+    cursor: pointer;  /* Change cursor on hover */
+  }
+  
+  /* Hover Effect for Subject Cards */
+  .subject-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 1200px) {
+    .subject-card-wrapper {
+      grid-template-columns: repeat(4, 1fr);  /* 4 cards per row on medium screens */
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .subject-card-wrapper {
+      grid-template-columns: repeat(3, 1fr);  /* 3 cards per row on smaller screens */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .subject-card-wrapper {
+      grid-template-columns: repeat(2, 1fr);  /* 2 cards per row on very small screens */
+    }
+  
+    .subject-card {
+      width: 100%;  /* Cards take full width of the container on smaller screens */
+    }
+  
+    .subj-container {
+      padding: 20px;  /* Adjust padding for smaller screens */
+    }
+  }
+  

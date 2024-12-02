@@ -1,1 +1,28 @@
-<p>subj-page works!</p>
+<div class="subj-container">
+    <h2 class="subj-title">Subject Details</h2>
+  
+    <div *ngIf="loading">
+      <p>Loading subject details...</p>
+    </div>
+  
+    <div *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+  
+    <div *ngIf="!loading && subj.length > 0">
+      <!-- Wrapper for all cards (move the wrapper outside of *ngFor) -->
+      <div class="subject-card-wrapper">
+        <!-- Loop through the subj array and display each subject -->
+        <div *ngFor="let subject of subj" class="subject-card">
+          <h3>{{ subject.subjectName }}</h3>
+          <p>{{ subject.description }}</p>
+          <p><strong>Duration:</strong> {{ subject.duration }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <ng-template #noData>
+      <p>No subject details available.</p>
+    </ng-template>
+  </div>
+  
