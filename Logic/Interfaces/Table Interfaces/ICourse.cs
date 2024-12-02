@@ -12,5 +12,6 @@ namespace Logic.Interfaces
     {
         public Task<Course> GetById(int id);
         public Task<List<Course>> GetAllCourses();
+        public Task<List<Course>> GetAllCoursesToSpecs(int specsId);
     }
 }

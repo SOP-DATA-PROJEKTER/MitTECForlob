@@ -10,15 +10,13 @@
     <!-- Updated heading -->
     <h2 class="specs-heading">Specialization for: {{ educationTitle | uppercase }}</h2>
   
-    <!-- Loop through the specsData and make each spec clickable -->
-    <!-- </div>[routerLink]="['/spec-detail', spec.id]" to add routerlink-->
     <div *ngFor="let spec of specsData" class="spec-card">
-      <div class="spec-card-content">
-        <h3 class="spec-name">{{ spec.specsName }}</h3>
-        <p class="spec-description">{{ spec.description }}</p>
+        <!-- Make the spec card clickable to navigate to the course details page -->
+        <div class="spec-card-content" [routerLink]="['/course', spec.id,spec.specsName]">
+          <h3 class="spec-name">{{ spec.specsName }}</h3>
+          <p class="spec-description">{{ spec.description }}</p>
+        </div>
       </div>
-    </div>
-  </div>
   
   <ng-template #noData>
     <p class="no-data">No specifications available for this education.</p>

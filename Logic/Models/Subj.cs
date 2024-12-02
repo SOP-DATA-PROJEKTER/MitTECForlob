@@ -19,7 +19,7 @@ namespace Logic.Models
         public string Description { get; set; }
         [ForeignKey("Course")]
         [AllowNull]
-        public int CouseId { get; set; }
-        public DateTime Duration { get; set; }
+        public int CourseId { get; set; }
+        public string Duration { get; set; }
     }
 }

@@ -21,7 +21,6 @@ namespace Logic.Models
         public DateTime? EndTime { get; set; }
         public bool EuxAvailability { get; set; }
         // Foreign key to Education
-        [AllowNull]
         [ForeignKey("Education")]
         public int EducationId { get; set; }
     }

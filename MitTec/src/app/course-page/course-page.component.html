@@ -1,0 +1,22 @@
+<div class="course-container">
+  <div *ngIf="loading">
+    <p>Loading courses...</p>
+  </div>
+
+  <div *ngIf="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="!loading && courseData.length > 0">
+    <h2>Courses for {{ specsTitle }}</h2>
+
+    <!-- Loop through the courseData and display each course -->
+    <div *ngFor="let course of courseData" class="course-card">
+      <h3>{{ course.courseName }}</h3>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <p>No courses available for this specification.</p>
+  </ng-template>
+</div>

@@ -32,5 +32,16 @@ namespace Logic.Models_Logic.Table_Repo
             }
             return null;
         }
+        public async Task<List<Course>> GetAllCoursesToSpecs(int specsId)
+        {
+            try
+            {
+                return await context.Course.Where(Course => Course.SpecsId == specsId).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+            }
+            return null;
+        }
     }
 }

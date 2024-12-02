@@ -38,6 +38,23 @@ namespace MitTecForlob.Server.Controllers
             }
 
         }
+        [HttpGet("GetAllCoursesBy/{id}")]
+        public async Task<ActionResult<List<Course>>> GetAllCoursesById(int id)
+        {
+            try
+            {
+                var course = await _course.GetAllCoursesToSpecs(id);
+                if (course == null)
+                {
+                    return NotFound();
+                }
+                return course;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
         #endregion
         #region POST Requests
         [HttpPost("CreateCourse")]
