@@ -4,13 +4,10 @@ import { EudPageComponent } from './education-page/education-page.component';
 import { SpecsPageComponent } from './specs/specs-page/specs-page.component';
 import { LoginComponent } from './login/login.component';
 
-
 export const routes: Routes = [
-
-    { path: '', component: HomeComponent },
-    { path: 'education/:educationType', component: EudPageComponent }, // EUD page
-    { path: 'specs/:educationName', component: SpecsPageComponent },
-    { path: 'login', component: LoginComponent }  // Login page 
-    // Add other routes here as needed
-    
-  ];
+  { path: '', component: HomeComponent },
+  { path: 'education/:educationType', component: EudPageComponent }, // EUD page
+  { path: 'specs/:educationId/:educationType/:educationTitle', component: SpecsPageComponent },
+  { path: 'login', component: LoginComponent }  // Login page 
+  // Add other routes here as needed
+];

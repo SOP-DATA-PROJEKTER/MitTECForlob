@@ -19,6 +19,10 @@ namespace Logic.Models
         [AllowNull]
         public List<Course>? Courses { get; set; }
         public DateTime? EndTime { get; set; }
-        public List<string> AvailableEducation { get; set; }
+        public bool EuxAvailability { get; set; }
+        // Foreign key to Education
+        [AllowNull]
+        [ForeignKey("Education")]
+        public int EducationId { get; set; }
     }
 }

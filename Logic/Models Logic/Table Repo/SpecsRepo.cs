@@ -28,6 +28,17 @@ namespace Logic.Models_Logic.Table_Repo
             }
             return null;
         }
+        public async Task<List<Specs>> GetAllSpecsToEducation(int educationId)
+        {
+            try
+            {
+                return await context.Specs.Where(Specs => Specs.EducationId == educationId).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+            }
+            return null;
+        }
 
         public async Task<Specs> GetById(int id)
         {

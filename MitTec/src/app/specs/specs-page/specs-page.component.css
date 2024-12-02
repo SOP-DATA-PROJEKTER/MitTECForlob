@@ -1,0 +1,97 @@
+/* Basic container styles */
+.specs-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .specs-heading {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  .loading-container,
+  .error-container,
+  .no-data {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .loading-container {
+    font-style: italic;
+  }
+  
+  .error-container {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .no-data {
+    color: #777;
+    font-size: 1.4rem;
+  }
+  
+  /* Styles for the spec cards */
+  .spec-card {
+    background-color: #fff;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .spec-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .spec-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .spec-name {
+    font-size: 1.4rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .spec-description {
+    font-size: 1.1rem;
+    color: #666;
+    margin-top: 8px;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .specs-container {
+      padding: 15px;
+    }
+  
+    .specs-heading {
+      font-size: 1.6rem;
+    }
+  
+    .spec-card {
+      padding: 15px;
+    }
+  
+    .spec-name {
+      font-size: 1.2rem;
+    }
+  
+    .spec-description {
+      font-size: 1rem;
+    }
+  }
+  

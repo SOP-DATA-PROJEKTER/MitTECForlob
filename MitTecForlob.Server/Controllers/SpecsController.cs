@@ -38,12 +38,12 @@ namespace MitTecForlob.Server.Controllers
             }
 
         }
-        [HttpGet("{name}")]
-        public async Task<ActionResult<Specs>> GetBySpecsName(string specsname)
+        [HttpGet("GetAllSpecsBy/{id}")]
+        public async Task<ActionResult<List<Specs>>> GetAllSpecsById(int id)
         {
             try
             {
-                var specs = await _specs.GetBySpecsName(specsname);
+                var specs = await _specs.GetAllSpecsToEducation(id);
                 if (specs == null)
                 {
                     return NotFound();
@@ -52,17 +52,15 @@ namespace MitTecForlob.Server.Controllers
             }
             catch (Exception ex)
             {
-
                 return BadRequest();
             }
-
         }
-        [HttpGet("{name}")]
-        public async Task<ActionResult<Specs>> GetBySpecsName(string specsname)
+        [HttpGet("GetAllSpecs")]
+        public async Task<ActionResult<List<Specs>>> GetAllSpecs()
         {
             try
             {
-                var specs = await _specs.GetBySpecsName(specsname);
+                var specs = await _specs.GetAllSpecs();
                 if (specs == null)
                 {
                     return NotFound();
@@ -71,10 +69,8 @@ namespace MitTecForlob.Server.Controllers
             }
             catch (Exception ex)
             {
-
                 return BadRequest();
             }
-
         }
         #endregion
         #region POST Requests

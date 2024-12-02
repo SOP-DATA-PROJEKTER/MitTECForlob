@@ -7,10 +7,11 @@
   <div class="education-grid">
     <!-- Loop through the educations and create button-like containers -->
     <div *ngFor="let education of educations" class="education-container">
-      <!-- Button that navigates to the specs-page with the education title -->
-      <button class="education-button" [routerLink]="['/specs', education.educationName]">
-        {{ education.educationName }}
-      </button>
+      <!-- Button that navigates to the specs-page with the education id and education type -->
+      <button class="education-button" 
+      [routerLink]="['/specs', education.id, educationType, education.educationName]">
+{{ education.educationName }}
+</button>
     </div>
   </div>
 </div>

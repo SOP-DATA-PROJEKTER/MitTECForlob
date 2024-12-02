@@ -15,5 +15,8 @@ namespace Logic.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Key { get; set; }
+        [ForeignKey("User")]
+        [AllowNull]
+        public int UserId { get; set; }
     }
 }

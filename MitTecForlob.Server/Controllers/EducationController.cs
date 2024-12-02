@@ -20,40 +20,40 @@ namespace MitTecForlob.Server.Controllers
             }
             #region GET Requests
             [HttpGet("{id}")]
-            public async Task<ActionResult<Education>> GetEducation(int id)
+            public async Task<ActionResult<Education>> GetById(int id)
             {
-                try
-                {
-                    var education = await _education.GetById(id);
-                    if (education == null)
-                    {
-                        return NotFound();
-                    }
-                    return education;
-                }
-                catch (Exception ex)
-                {
-
-                    return BadRequest();
-                }
-
-            }
-        [HttpGet("GetAllEducations")]
-        public async Task<List<Education>> GetAllEducations()
-        {
             try
             {
-                var education = await _education.GetAllEducations();
+                var education = await _education.GetById(id);
                 if (education == null)
                 {
-                    return null;
+                    return NotFound();
                 }
                 return education;
             }
             catch (Exception ex)
             {
 
-                return null;
+                return BadRequest();
+            }
+            return null;
+            }
+        [HttpGet("GetAllEducations")]
+        public async Task<ActionResult<List<Education>>> GetAllEducations()
+        {
+            try
+            {
+                var education = await _education.GetAllEducations();
+                if (education == null)
+                {
+                    return NotFound(); ;
+                }
+                return education;
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest();
             }
 
         }

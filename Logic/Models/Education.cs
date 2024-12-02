@@ -19,5 +19,6 @@ namespace Logic.Models
         [AllowNull]
         public List<Specs>? Specs { get; set; }
 
+
     }
 }

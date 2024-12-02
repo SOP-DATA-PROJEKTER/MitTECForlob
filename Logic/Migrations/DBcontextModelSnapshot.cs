@@ -34,7 +34,13 @@ namespace Logic.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("AdminKeys");
                 });
@@ -51,7 +57,7 @@ namespace Logic.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SpecsId")
+                    b.Property<int>("SpecsId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -86,19 +92,17 @@ namespace Logic.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CourseId")
+                    b.Property<int>("CourseId")
                         .HasColumnType("int");
 
                     b.Property<string>("Note")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
 
                     b.HasIndex("UserId");
 
@@ -113,19 +117,18 @@ namespace Logic.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.PrimitiveCollection<string>("AvailableEducation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EducationId")
+                    b.Property<int>("EducationId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("EndTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("EuxAvailability")
+                        .HasColumnType("bit");
 
                     b.Property<string>("SpecsName")
                         .IsRequired()
@@ -147,6 +150,9 @@ namespace Logic.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CouseId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -175,9 +181,6 @@ namespace Logic.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AdminKeysId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("CourseId")
                         .HasColumnType("int");
 
@@ -197,8 +200,6 @@ namespace Logic.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdminKeysId");
-
                     b.HasIndex("CourseId");
 
                     b.HasIndex("EducationId");
@@ -208,33 +209,40 @@ namespace Logic.Migrations
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("Logic.Models.AdminKeys", b =>
+                {
+                    b.HasOne("Logic.Models.User", null)
+                        .WithOne("AdminKeys")
+                        .HasForeignKey("Logic.Models.AdminKeys", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Logic.Models.Course", b =>
                 {
                     b.HasOne("Logic.Models.Specs", null)
                         .WithMany("Courses")
-                        .HasForeignKey("SpecsId");
+                        .HasForeignKey("SpecsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Logic.Models.Notes", b =>
                 {
-                    b.HasOne("Logic.Models.Course", "Course")
-                        .WithMany()
-                        .HasForeignKey("CourseId");
-
-                    b.HasOne("Logic.Models.User", "User")
+                    b.HasOne("Logic.Models.User", null)
                         .WithMany("Notes")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Course");
-
-                    b.Navigation("User");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Logic.Models.Specs", b =>
                 {
                     b.HasOne("Logic.Models.Education", null)
                         .WithMany("Specs")
-                        .HasForeignKey("EducationId");
+                        .HasForeignKey("EducationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Logic.Models.Subj", b =>
@@ -246,10 +254,6 @@ namespace Logic.Migrations
 
             modelBuilder.Entity("Logic.Models.User", b =>
                 {
-                    b.HasOne("Logic.Models.AdminKeys", "AdminKeys")
-                        .WithMany()
-                        .HasForeignKey("AdminKeysId");
-
                     b.HasOne("Logic.Models.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId");
@@ -261,8 +265,6 @@ namespace Logic.Migrations
                     b.HasOne("Logic.Models.Specs", "Specs")
                         .WithMany()
                         .HasForeignKey("SpecsId");
-
-                    b.Navigation("AdminKeys");
 
                     b.Navigation("Course");
 
@@ -288,6 +290,8 @@ namespace Logic.Migrations
 
             modelBuilder.Entity("Logic.Models.User", b =>
                 {
+                    b.Navigation("AdminKeys");
+
                     b.Navigation("Notes");
                 });
 #pragma warning restore 612, 618

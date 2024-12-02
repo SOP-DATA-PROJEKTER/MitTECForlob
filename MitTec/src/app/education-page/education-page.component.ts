@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-eud-page',
   standalone: true,
-  imports: [CommonModule,RouterModule, HttpClientModule], // Import HttpClientModule here
+  imports: [CommonModule, RouterModule, HttpClientModule], // Import HttpClientModule here
   templateUrl: './education-page.component.html',
   styleUrls: ['./education-page.component.css']
 })

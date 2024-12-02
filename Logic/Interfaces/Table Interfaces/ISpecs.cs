@@ -13,5 +13,6 @@ namespace Logic.Interfaces
         public Task<Specs> GetBySpecsName (string specsname);
         public Task<Specs> GetById(int id);
         public Task<List<Specs>> GetAllSpecs();
+        public Task<List<Specs>> GetAllSpecsToEducation(int educationId);
     }
 }

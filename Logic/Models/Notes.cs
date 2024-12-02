@@ -15,9 +15,11 @@ namespace Logic.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Note {  get; set; }
+        [ForeignKey("User")]
         [AllowNull]
-        public virtual User? User { get; set; }
+        public int UserId { get; set; }
+        [ForeignKey("Course")]
         [AllowNull]
-        public virtual Course? Course { get; set; }
+        public int CourseId { get; set; }
     }
 }

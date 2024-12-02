@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices.Marshalling;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Logic.Models
 {
@@ -16,6 +17,9 @@ namespace Logic.Models
         public int Id { get; set; }
         public string SubjectName { get; set; }
         public string Description { get; set; }
+        [ForeignKey("Course")]
+        [AllowNull]
+        public int CouseId { get; set; }
         public DateTime Duration { get; set; }
     }
 }

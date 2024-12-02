@@ -17,5 +17,8 @@ namespace Logic.Models
         public string CourseName { get; set; }
         [AllowNull]
         public List<Subj> SubjectList {  get; set; } = new List<Subj>();
+        [ForeignKey("Specs")]
+        [AllowNull]
+        public int SpecsId { get; set; }
     }
 }
