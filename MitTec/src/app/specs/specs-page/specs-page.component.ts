@@ -40,9 +40,18 @@ export class SpecsPageComponent implements OnInit {
     const API_URL = `https://localhost:7164/api/Specs/GetAllSpecsBy/${this.educationId}`; // Replace with your correct API URL
     this.http.get<any[]>(API_URL).subscribe(
       (data) => {
-        this.specsData = data;  // Store the fetched data
+        // Filter the specs based on EuxAvailability and EducationType
+        this.specsData = data.filter(spec => {
+          // If EuxAvailability is 0, only show for 'eud' type
+          if (spec.euxAvailability  === false) {
+            return this.educationType === 'eud';
+          }
+          // If EuxAvailability is 1, show on both education types
+          return spec.euxAvailability  === true;
+        });
+  
         this.loading = false;  // Data fetched, stop loading
-        console.log('Specs Data:', this.specsData);  // Log the fetched data
+        console.log('Filtered Specs Data:', this.specsData);  // Log the filtered data
       },
       (error) => {
         this.error = 'Error fetching specs data. Please try again later.';  // Handle error
