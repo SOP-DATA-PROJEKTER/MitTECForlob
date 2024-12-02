@@ -14,17 +14,16 @@ html, body {
   justify-content: center;  /* Centers content horizontally */
   align-items: center;  /* Centers content vertically */
   font-family: 'Arial', sans-serif;
-  background-color: #f7f7f7;
+  background-color: #aca8ac;
   color: #333;
 }
 
 /* Container to Center the Content */
 .course-container {
-  background-color: #fff;
+  background-color: #27232c;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -37,7 +36,7 @@ h2 {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #2b2b2b;
+  color: #fff;
   text-transform: uppercase;
 }
 
@@ -57,7 +56,7 @@ p {
 
 /* Course Cards - Styling and Hover Effects */
 .course-card {
-  background-color: #f0f0f0;
+  background-color: #5C2D91;
   padding: 20px;
   margin: 15px 0;
   border-radius: 10px;
@@ -75,7 +74,7 @@ p {
 /* Course Name */
 .course-card h3 {
   font-size: 1.5rem;
-  color: #333;
+  color: #fff;
   text-align: center;
   font-weight: bold;
   text-transform: capitalize;
