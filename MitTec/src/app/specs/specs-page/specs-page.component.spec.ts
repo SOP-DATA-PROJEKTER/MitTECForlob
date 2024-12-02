@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EudPageComponent } from './eud-page.component';
+import { SpecsPageComponent } from './specs-page.component';
 
-describe('EudPageComponent', () => {
-  let component: EudPageComponent;
-  let fixture: ComponentFixture<EudPageComponent>;
+describe('SpecsPageComponent', () => {
+  let component: SpecsPageComponent;
+  let fixture: ComponentFixture<SpecsPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EudPageComponent]
+      imports: [SpecsPageComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(EudPageComponent);
+    fixture = TestBed.createComponent(SpecsPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

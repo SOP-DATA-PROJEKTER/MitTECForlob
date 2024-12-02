@@ -1,0 +1,46 @@
+/* Title/Header Section */
+.page-header {
+    text-align: center; /* Centers the title */
+    margin-bottom: 20px; /* Adds space below the title */
+  }
+  
+  /* Education Grid Layout */
+  .education-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Creates 5 equal-width columns */
+    gap: 20px; /* Adds space between grid items */
+    justify-items: center; /* Centers items horizontally */
+    align-items: center; /* Centers items vertically */
+    width: 80vw; /* Makes the grid occupy 80% of the screen width */
+    margin: 40px auto 0; /* Adds a margin to the top and centers the grid horizontally */
+  }
+  
+  /* Education Button Container */
+  .education-container {
+    display: flex;
+    justify-content: center; /* Centers the button horizontally */
+    align-items: center; /* Centers the button vertically */
+  }
+  
+  /* Education Button Styling */
+  .education-button {
+    width: 250px; /* Fixed width for the buttons */
+    height: 70px; /* Fixed height for the buttons */
+    padding: 0; /* Remove extra padding to keep the size consistent */
+    font-size: 1.2em; /* Makes the text size bigger */
+    background-color: #5C2D91; /* Purple color */
+    color: white; /* White text */
+    border: none; /* Removes the border */
+    border-radius: 10px; /* Rounds the corners of the button */
+    cursor: pointer; /* Changes the cursor to a pointer */
+    text-align: center; /* Centers text inside the button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Button Hover Effect */
+  .education-button:hover {
+    background-color: #7706f8; /* Changes button color on hover */
+  }
+  

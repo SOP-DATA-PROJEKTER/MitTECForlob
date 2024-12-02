@@ -19,5 +19,6 @@ namespace Logic.Models
         [AllowNull]
         public List<Course>? Courses { get; set; }
         public DateTime? EndTime { get; set; }
+        public List<string> AvailableEducation { get; set; }
     }
 }

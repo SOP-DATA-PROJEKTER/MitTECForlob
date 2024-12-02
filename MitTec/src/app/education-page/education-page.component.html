@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h1>{{ title }}</h1> <!-- Dynamically change the title -->
+</div>
+
+<div *ngIf="educations.length > 0; else noData">
+  <!-- Create a container for the grid -->
+  <div class="education-grid">
+    <!-- Loop through the educations and create button-like containers -->
+    <div *ngFor="let education of educations" class="education-container">
+      <!-- Button that navigates to the specs-page with the education title -->
+      <button class="education-button" [routerLink]="['/specs', education.educationName]">
+        {{ education.educationName }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noData>
+  <!-- Show this if there is no data -->
+  <p>No data available.</p>
+</ng-template>

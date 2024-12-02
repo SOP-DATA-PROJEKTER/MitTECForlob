@@ -57,6 +57,25 @@ namespace MitTecForlob.Server.Controllers
             }
 
         }
+        [HttpGet("{name}")]
+        public async Task<ActionResult<Specs>> GetBySpecsName(string specsname)
+        {
+            try
+            {
+                var specs = await _specs.GetBySpecsName(specsname);
+                if (specs == null)
+                {
+                    return NotFound();
+                }
+                return specs;
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest();
+            }
+
+        }
         #endregion
         #region POST Requests
         [HttpPost("CreateSpecs")]

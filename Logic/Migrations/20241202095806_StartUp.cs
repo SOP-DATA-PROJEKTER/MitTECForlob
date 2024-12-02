@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Logic.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialStartup : Migration
+    public partial class StartUp : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -46,6 +46,7 @@ namespace Logic.Migrations
                     SpecsName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EndTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    AvailableEducation = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EducationId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
