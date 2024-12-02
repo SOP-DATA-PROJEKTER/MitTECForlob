@@ -38,5 +38,9 @@ namespace Logic.Models_Logic.Table_Repo
         {
             return await context.Subj.FirstOrDefaultAsync(Subj => Subj.SubjectName == subjectname);
         }
+        public async Task<List<Subj>> GetAllSubjToCourses(int id)
+        {
+            return await context.Subj.Where(Subj => Subj.CourseId == id).ToListAsync();
+        }
     }
 }

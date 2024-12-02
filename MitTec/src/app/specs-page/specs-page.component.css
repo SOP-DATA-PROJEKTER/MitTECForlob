@@ -1,94 +1,101 @@
 /* Basic container styles */
-html,body{
+html, body {
   background-color: #aca8a8;
 }
+
 .specs-container {
-    padding: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #27232c;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 1000px;
+  height: 80vh;
+  margin: 0 auto;
+  background-color: #27232c;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center child elements horizontally */
+}
+
+.specs-heading {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.loading-container,
+.error-container,
+.no-data {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.loading-container {
+  font-style: italic;
+}
+
+.error-container {
+  color: red;
+  font-weight: bold;
+}
+
+.no-data {
+  color: #777;
+  font-size: 1.4rem;
+}
+
+/* Styles for the spec cards */
+.spec-card {
+  cursor: pointer; /* Change the cursor to a pointer when hovering over the card */
+  transition: transform 0.2s; /* Add a smooth transform transition */
+  margin-bottom: 20px;
+  width: 80%;
+  max-width: 600px; /* Ensure the card does not stretch too wide */
+}
+
+.spec-card:hover {
+  transform: scale(1.05); /* Slightly scale the card when hovered */
+}
+
+.spec-card-content {
+  padding: 20px;
+  background-color: #5C2D91;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(230, 230, 230, 0.1);
+  color: #fff;
+}
+
+.spec-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.spec-description {
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .specs-container {
+    padding: 15px;
   }
-  
+
   .specs-heading {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #fff;
-    font-weight: 600;
+    font-size: 1.6rem;
   }
-  
-  .loading-container,
-  .error-container,
-  .no-data {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #555;
-  }
-  
-  .loading-container {
-    font-style: italic;
-  }
-  
-  .error-container {
-    color: red;
-    font-weight: bold;
-  }
-  
-  .no-data {
-    color: #777;
-    font-size: 1.4rem;
-  }
-  
-  /* Styles for the spec cards */
+
   .spec-card {
-    cursor: pointer;  /* Change the cursor to a pointer when hovering over the card */
-    transition: transform 0.2s;  /* Add a smooth transform transition */
+    padding: 30px;
   }
-  
-  .spec-card:hover {
-    transform: scale(1.05);  /* Slightly scale the card when hovered */
-  }
-  
-  .spec-card-content {
-    padding: 20px;
-    background-color: #5C2D91;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(230, 230, 230, 0.1);
-    color: #fff;
-  }
-  
+
   .spec-name {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.2rem;
   }
-  
+
   .spec-description {
     font-size: 1rem;
-    color: #fff;
   }
-  
-  /* Responsiveness */
-  @media (max-width: 768px) {
-    .specs-container {
-      padding: 15px;
-    }
-  
-    .specs-heading {
-      font-size: 1.6rem;
-    }
-  
-    .spec-card {
-      padding: 30px;
-    }
-  
-    .spec-name {
-      font-size: 1.2rem;
-    }
-  
-    .spec-description {
-      font-size: 1rem;
-    }
-  }
-  
+}

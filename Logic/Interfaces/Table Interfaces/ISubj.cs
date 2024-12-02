@@ -13,6 +13,6 @@ namespace Logic.Interfaces
         public Task<Subj> GetBySubjName(string subjectname);
         public Task<Subj> GetById(int id);
         public Task<List<Subj>> GetAllSubj();
-
+        public Task<List<Subj>> GetAllSubjToCourses(int id);
     }
 }

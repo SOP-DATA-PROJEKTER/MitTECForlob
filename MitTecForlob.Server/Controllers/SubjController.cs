@@ -36,12 +36,12 @@ namespace MitTecForlob.Server.Controllers
             }
 
         }
-        [HttpGet("{name}")]
-        public async Task<ActionResult<Subj>> GetBySubjName(string subjname)
+        [HttpGet("GetAllSubjBy/{id}")]
+        public async Task<ActionResult<List<Subj>>> GetAllCoursesById(int id)
         {
             try
             {
-                var subj = await _subj.GetBySubjName(subjname);
+                var subj = await _subj.GetAllSubjToCourses(id);
                 if (subj == null)
                 {
                     return NotFound();
@@ -50,10 +50,8 @@ namespace MitTecForlob.Server.Controllers
             }
             catch (Exception ex)
             {
-
                 return BadRequest();
             }
-
         }
         #endregion
         #region POST Requests
