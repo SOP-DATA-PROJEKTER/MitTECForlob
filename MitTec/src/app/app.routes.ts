@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { EudPageComponent } from './education-page/education-page.component';
-import { SpecsPageComponent } from './specs/specs-page/specs-page.component';
+import { SpecsPageComponent } from './specs-page/specs-page.component';
 import { CoursePageComponent } from './course-page/course-page.component';
 import { LoginComponent } from './login/login.component';
 
