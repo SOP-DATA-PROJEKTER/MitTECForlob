@@ -12,7 +12,9 @@
 
     <!-- Loop through the courseData and display each course -->
     <div *ngFor="let course of courseData" class="course-card">
-      <h3>{{ course.courseName }}</h3>
+      <div [routerLink]="['/subj', course.courseId, course.courseTitle]">
+        <h3>{{ course.courseName }}</h3>
+      </div>
     </div>
   </div>
 

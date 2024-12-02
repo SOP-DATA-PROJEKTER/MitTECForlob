@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router'; // To access the route parameters
+import { ActivatedRoute, RouterModule } from '@angular/router'; // To access the route parameters
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-specs-page',
   standalone: true,
-  imports: [CommonModule, HttpClientModule], // Import HttpClientModule for HTTP requests
+  imports: [CommonModule,RouterModule, HttpClientModule], // Import HttpClientModule for HTTP requests
   templateUrl: './course-page.component.html',
   styleUrls: ['./course-page.component.css']
 })
