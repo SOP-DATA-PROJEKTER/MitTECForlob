@@ -11,10 +11,8 @@
     <h2>Courses for {{ specsTitle }}</h2>
 
     <!-- Loop through the courseData and display each course -->
-    <div *ngFor="let course of courseData" class="course-card">
-      <div [routerLink]="['/subj', course.id, course.courseName]">
+    <div *ngFor="let course of courseData" class="course-card" [routerLink]="['/subj', course.id, course.courseName]">
         <h3>{{ course.courseName }}</h3>
-      </div>
     </div>
   </div>
 
