@@ -16,5 +16,6 @@ namespace Logic.Interfaces
         public IUser User { get; }
         public INotes Notes { get; }
         public IAdminKeys AdminKeys { get; }
+        public IInternshipGoal InternshipGoal { get; }
     }
 }

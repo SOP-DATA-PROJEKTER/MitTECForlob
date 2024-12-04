@@ -5,6 +5,7 @@ import { SpecsPageComponent } from './specs-page/specs-page.component';
 import { CoursePageComponent } from './course-page/course-page.component';
 import { LoginComponent } from './login/login.component';
 import { SubjPageComponent } from './subj-page/subj-page.component';
+import { PraktikPageComponent } from './praktik-page/praktik-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,11 +13,8 @@ export const routes: Routes = [
   { path: 'specs/:educationId/:educationType/:educationTitle', component: SpecsPageComponent },
   { path: 'course/:specsId/:specsTitle', component: CoursePageComponent },
   { path: 'subj/:courseId/:courseTitle', component: SubjPageComponent },
+  { path: 'praktik/:courseId/:courseName', component: PraktikPageComponent },
   { path: 'login', component: LoginComponent },  // Login page 
-  { path: 'course-page', component: CoursePageComponent },
-  { path: 'education-page', component: EudPageComponent },
-  { path: 'specs-page', component: SpecsPageComponent },
-  { path: 'subj-page', component: SubjPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' } // Default route
   // Add other routes here as needed
 ];

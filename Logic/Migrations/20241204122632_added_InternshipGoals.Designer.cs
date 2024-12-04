@@ -3,6 +3,7 @@ using Logic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Logic.Migrations
 {
     [DbContext(typeof(DBcontext))]
-    partial class DBcontextModelSnapshot : ModelSnapshot
+    [Migration("20241204122632_added_InternshipGoals")]
+    partial class added_InternshipGoals
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,9 +128,6 @@ namespace Logic.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CourseId")
-                        .IsUnique();
 
                     b.HasIndex("UserId");
 
@@ -262,12 +262,6 @@ namespace Logic.Migrations
 
             modelBuilder.Entity("Logic.Models.Notes", b =>
                 {
-                    b.HasOne("Logic.Models.Course", null)
-                        .WithOne("Notes")
-                        .HasForeignKey("Logic.Models.Notes", "CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Logic.Models.User", null)
                         .WithMany("Notes")
                         .HasForeignKey("UserId")
@@ -317,8 +311,6 @@ namespace Logic.Migrations
             modelBuilder.Entity("Logic.Models.Course", b =>
                 {
                     b.Navigation("InternshipGoal");
-
-                    b.Navigation("Notes");
 
                     b.Navigation("SubjectList");
                 });

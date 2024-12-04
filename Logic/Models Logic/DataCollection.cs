@@ -19,6 +19,7 @@ namespace Logic.Models_Logic
         private readonly IUser user;
         private readonly IAdminKeys adminKeys;
         private readonly INotes notes;
+        private readonly IInternshipGoal internshipGoal;
 
         public DataCollection(DBcontext Context)
         {
@@ -29,6 +30,7 @@ namespace Logic.Models_Logic
             user = new UserRepo(Context);
             adminKeys = new AdminKeysRepo(Context);
             notes = new NotesRepo(Context);
+            internshipGoal = new InternshipGoalRepo(Context);
         }
         public IEducation Education
         {
@@ -57,6 +59,10 @@ namespace Logic.Models_Logic
         public INotes Notes
         {
             get { return notes; }
+        }
+        public IInternshipGoal InternshipGoal
+        {
+            get { return internshipGoal; }
         }
     }
 }

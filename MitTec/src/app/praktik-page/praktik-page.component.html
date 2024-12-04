@@ -1,0 +1,46 @@
+<div class="praktik-container">
+    <h2>Praktik Details for {{courseName}}</h2>
+  
+    <!-- Loading Spinner -->
+    <div *ngIf="loading">
+      <p>Loading praktik details...</p>
+    </div>
+  
+    <!-- Error Message -->
+    <div *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+  
+    <!-- Display the praktik data -->
+    <div *ngIf="!loading && praktik.length > 0">
+      <div class="praktik-card">
+        <!-- Loop through praktik data and display each item -->
+        <div *ngFor="let item of praktik" class="praktik-item">
+          
+          <!-- Description Box -->
+          <div class="description-box">
+            <h2>Praktik Mål:</h2>
+            <p>{{ item?.description || 'No description available.' }}</p>
+          </div>
+  
+          <!-- User Notes Input -->
+          <div class="notes-input">
+            <label for="notes">Your Notes:</label>
+            <textarea
+              id="notes"
+              [(ngModel)]="userNotes"
+              rows="4" 
+              cols="50"
+              placeholder="Write your notes here...">
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- If no data available -->
+    <ng-template #noData>
+      <p>No praktik details available.</p>
+    </ng-template>
+  </div>
+  

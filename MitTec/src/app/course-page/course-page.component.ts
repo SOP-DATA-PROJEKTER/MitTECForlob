@@ -95,5 +95,18 @@ export class CoursePageComponent implements OnInit {
     console.log('Intertwined courses:', intertwinedCourses);  // Verify the final output
     return intertwinedCourses;
   }
+  getRouterLink(course: any): string[] {
+    // Check if courseName contains 'praktikforløb'
+    if (course.courseName && course.courseName.toLowerCase().includes('praktikforløb')) {
+      return ['/praktik', course.id, course.courseName]; // Navigate to the praktik page
+    }
+    // Check if courseName contains 'hovedeforløb'
+    else if (course.courseName && course.courseName.toLowerCase().includes('hovedeforløb')) {
+      return ['/subj', course.id, course.courseName]; // Navigate to the subj page
+    } else {
+      return ['/default-page']; // Fallback route if neither condition is met
+    }
+  }
+  
   
 }

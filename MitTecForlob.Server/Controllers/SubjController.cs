@@ -71,7 +71,7 @@ namespace MitTecForlob.Server.Controllers
         #endregion
         #region PUT Requests
         [HttpPut("UpdateSubj")]
-        public async Task<HttpStatusCode> UpdateSpecs(Subj subj)
+        public async Task<HttpStatusCode> UpdateSubj(Subj subj)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace MitTecForlob.Server.Controllers
         #endregion
         #region DELETE Requests
         [HttpDelete("DeleteSubj")]
-        public async Task<HttpStatusCode> DeleteSpecs(Subj subj)
+        public async Task<HttpStatusCode> DeleteSubj(Subj subj)
         {
             try
             {

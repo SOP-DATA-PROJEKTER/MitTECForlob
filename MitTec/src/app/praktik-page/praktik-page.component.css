@@ -1,0 +1,83 @@
+/* Main container */
+.praktik-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* Align content from top to bottom */
+    height: 90vh;  /* Take up the full viewport height */
+    max-width: 900px;  /* Max width to prevent it from being too wide */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  /* Card Container */
+  .praktik-card {
+    display: flex;
+    flex-direction: row;  /* Align items side by side */
+    justify-content: space-between;  /* Space them apart */
+    margin-bottom: 20px;
+    width: 100%;  /* Take up the full width of the container */
+    gap: 20px;  /* Add some space between the description and the notes input */
+  }
+  
+  /* Description Box */
+  .description-box {
+    background-color: #e8f0fe;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 45%;  /* Description box takes up about 30% of the width */
+    height: calc(70vh);  /* Take up remaining height from top to bottom minus padding */
+    overflow-y: auto;  /* Add scroll only if content exceeds box height */
+  }
+  
+  .description-box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .description-box p {
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+    word-wrap: break-word;  /* Ensures text wraps in case it is too long */
+  }
+  
+  /* Notes Input */
+  .notes-input {
+    display: flex;
+    flex-direction: column;
+    width: 45%;  /* Notes input takes up about 30% of the width */
+    height: calc(74vh);  /* Take up remaining height from top to bottom minus padding */
+    justify-content: flex-start;  /* Align input at the top */
+  }
+  
+  .notes-input label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .notes-input textarea {
+    resize: none;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    flex-grow: 1;  /* Allow the textarea to expand vertically */
+    min-height: 150px;  /* Set a minimum height to ensure proper sizing */
+  }
+  
+  /* Styling for the entire card */
+  .praktik-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+body{
+    overflow: hidden;
+}
