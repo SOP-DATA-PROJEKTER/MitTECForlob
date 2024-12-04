@@ -12,6 +12,11 @@ export const routes: Routes = [
   { path: 'specs/:educationId/:educationType/:educationTitle', component: SpecsPageComponent },
   { path: 'course/:specsId/:specsTitle', component: CoursePageComponent },
   { path: 'subj/:courseId/:courseTitle', component: SubjPageComponent },
-  { path: 'login', component: LoginComponent }  // Login page 
+  { path: 'login', component: LoginComponent },  // Login page 
+  { path: 'course-page', component: CoursePageComponent },
+  { path: 'education-page', component: EudPageComponent },
+  { path: 'specs-page', component: SpecsPageComponent },
+  { path: 'subj-page', component: SubjPageComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' } // Default route
   // Add other routes here as needed
 ];

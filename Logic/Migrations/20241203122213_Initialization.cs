@@ -1,12 +1,11 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Logic.Migrations
 {
     /// <inheritdoc />
-    public partial class Initilization : Migration
+    public partial class Initialization : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,7 +31,7 @@ namespace Logic.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SpecsName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EndTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Duration = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EuxAvailability = table.Column<bool>(type: "bit", nullable: false),
                     EducationId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -75,9 +74,8 @@ namespace Logic.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SubjectName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CouseId = table.Column<int>(type: "int", nullable: false),
-                    Duration = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CourseId = table.Column<int>(type: "int", nullable: true)
+                    CourseId = table.Column<int>(type: "int", nullable: false),
+                    Duration = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,7 +84,8 @@ namespace Logic.Migrations
                         name: "FK_Subj_Course_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Course",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

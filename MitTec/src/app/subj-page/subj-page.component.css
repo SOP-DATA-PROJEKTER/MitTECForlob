@@ -20,7 +20,7 @@
   
   /* Container to Center the Content and apply the purple background */
   .subj-container {
-    background-color: #5C2D91;  /* Purple background for the content container */
+    background-color: #27232c;  /* Purple background for the content container */
     padding: 30px;
     margin: 50px;
     border-radius: 12px;
@@ -52,7 +52,7 @@
   
   /* Subject Card - Styling and Hover Effects */
   .subject-card {
-    background-color: #27232c;  /* Dark background for the cards */
+    background-color: #5C2D91;  /* Dark background for the cards */
     border: 1px solid #ddd;
     padding: 20px;
     margin: 10px;

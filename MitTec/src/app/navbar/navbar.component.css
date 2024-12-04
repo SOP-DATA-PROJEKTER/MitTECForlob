@@ -1,0 +1,59 @@
+.NavBar {
+    height: 50px; /* Allow navbar height to adjust based on content */
+    width: 100%; /* Fill the entire width of the page */
+    background-color: #333; /* Dark background color */
+    display: flex;
+    justify-content: space-between; /* Space out the logo and links */
+    align-items: center; /* Vertically center the items */
+    padding: 0 40px; /* Increased padding to make the navbar fill more space horizontally (adjust as needed) */
+    color: white;
+    position: sticky;
+    top: 0; /* Stick navbar to the top */
+    z-index: 1000; /* Ensure the navbar stays on top */
+    box-sizing: border-box; /* Include padding in width and height calculation */
+    overflow: hidden; /* Prevent any overflow from happening */
+  }
+  
+  .navbar-logo svg {
+    width: 100px;
+    height: auto;
+    fill: white;
+}
+  
+  .nav-links {
+    display: flex;
+    gap: 20px; /* Space between navigation items */
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase; /* Make text uppercase */
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #f39c12; /* Highlight color for hover */
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .NavBar {
+      flex-direction: column;
+      height: auto; /* Ensure the navbar height adjusts to content */
+      padding: 10px 20px; /* Adjust padding for smaller screens */
+    }
+  
+    .logo {
+      width: 40%; /* Make logo bigger on smaller screens */
+      margin-bottom: 10px;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  
