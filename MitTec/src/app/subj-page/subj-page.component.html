@@ -1,28 +1,46 @@
 <div class="subj-container">
-    <h2 class="subj-title">Subject Details</h2>
-  
-    <div *ngIf="loading">
-      <p>Loading subject details...</p>
-    </div>
-  
-    <div *ngIf="error">
-      <p>{{ error }}</p>
-    </div>
-  
-    <div *ngIf="!loading && subj.length > 0">
-      <!-- Wrapper for all cards (move the wrapper outside of *ngFor) -->
+  <!-- Loading message -->
+  <div *ngIf="loading">
+    <p>Loading subjects...</p>
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- When subjects data is loaded and not empty -->
+  <div *ngIf="!loading && subj.length > 0">
+    <!-- Box containing the title and the cards -->
+    <div class="subject-card-box">
+      <!-- Title inside the box -->
+      <h2 class="subject-title">Subjects for {{ subjTitle }}</h2>
+
+      <!-- Wrapper for all subject cards -->
       <div class="subject-card-wrapper">
         <!-- Loop through the subj array and display each subject -->
-        <div *ngFor="let subject of subj" class="subject-card">
+        <div *ngFor="let subject of subj" 
+             class="subject-card" 
+             [ngClass]="{ 'expanded': subject.showMore }"
+             (click)="toggleDescription(subject)">
           <h3>{{ subject.subjectName }}</h3>
-          <p>{{ subject.description }}</p>
+
+          <!-- Description with conditional "See more" -->
+          <p class="description" [ngClass]="{ 'expanded': subject.showMore }">
+            {{ subject.showMore ? subject.description : (subject.description | slice:0:100) }} 
+            
+            <!-- Show "See more" if the description is truncated and not expanded -->
+            <span *ngIf="subject.isTruncated && !subject.showMore" class="see-more">Se mere</span>
+          </p>
+
           <p><strong>Duration:</strong> {{ subject.duration }}</p>
         </div>
       </div>
     </div>
-  
-    <ng-template #noData>
-      <p>No subject details available.</p>
-    </ng-template>
   </div>
-  
+
+  <!-- No data message when subject list is empty -->
+  <ng-template #noData>
+    <p>No subjects available for this specification.</p>
+  </ng-template>
+</div>

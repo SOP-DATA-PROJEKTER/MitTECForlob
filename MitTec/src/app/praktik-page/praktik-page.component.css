@@ -7,10 +7,15 @@
     max-width: 900px;  /* Max width to prevent it from being too wide */
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #27232c;
     border-radius: 8px;
     box-sizing: border-box;
     text-align: center;
+    color: white;
+  }
+  .course-name{
+    font-size: 2rem;
+    margin-bottom: 20px;
   }
   /* Card Container */
   .praktik-card {
@@ -24,9 +29,9 @@
   
   /* Description Box */
   .description-box {
-    background-color: #e8f0fe;
+    background-color: #5C2D91;
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 8px;;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 45%;  /* Description box takes up about 30% of the width */
     height: calc(70vh);  /* Take up remaining height from top to bottom minus padding */
@@ -40,7 +45,7 @@
   
   .description-box p {
     font-size: 1rem;
-    color: #333;
+    color: #fff;
     margin: 0;
     word-wrap: break-word;  /* Ensures text wraps in case it is too long */
   }
