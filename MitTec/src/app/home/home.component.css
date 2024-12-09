@@ -1,115 +1,146 @@
-/* Background styling for the entire component */
+/* Global Styles */
+html, body {
+    overflow: hidden; /* Disable scrolling */
+    height: 100%; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+/* Host Component Styles */
 :host {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    min-height: 100vh; /* Ensures the background covers the entire viewport */
-    background-color: #aca8a8; /* Light gray background */
+    justify-content: center;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    padding: 0;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
+    background-color: transparent;
+    position: relative; /* Ensure stacking context for z-index */
+    z-index: 0; /* Default stacking context */
 }
 
-/* Style for the logo container */
-.logo {
-    margin-bottom: 50px; /* Adds space between the logo and the buttons */
-    width: 200px;        /* Increased width for a larger logo */
-    height: auto;        /* Maintains aspect ratio */
-    display: inline-block;
+/* Page Wrapper */
+.page-wrapper {
+    position: relative; /* Ensure stacking context for z-index */
+    width: 100%; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 0; /* Default stacking context */
 }
 
-/* Ensure the SVG within the logo container fits correctly */
-.logo svg {
-    width: 100%;             /* Ensures the SVG fits within the .logo container */
-    height: auto;
-    fill: currentColor;      /* Uses the color of the parent element */
-    color: #5C2D91;          /* Sets the SVG color to purple */
+/* Lottie Background */
+#lottie-container {
+    position: fixed; /* Fix Lottie background to viewport */
+    top: 50px; /* Offset by navbar height */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 50px); /* Subtract navbar height */
+    z-index: 0; /* Keep it behind other content */
+    overflow: hidden;
+    background-color: transparent;
 }
 
-/* Button group for EUD and EUX buttons */
+/* Ensure Lottie SVG Scales Correctly */
+#lottie-container svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Scale proportionally */
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Content Area */
+.content {
+    position: relative;
+    z-index: 1; /* Ensure it appears above the Lottie background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Position items higher on the page */
+    padding-top: 30px; /* Add space from the top */
+    width: 100%;
+    height: calc(100vh - 50px); /* Subtract navbar height */
+    overflow: hidden;
+}
+
+/* Wrapper for the text and buttons */
+.content-wrapper {
+    position: relative; /* Position within stacking context */
+    z-index: 2; /* Ensure it is above both the Lottie and content */
+    background: linear-gradient(
+        180deg,
+        rgba(200, 200, 255, 0.8) 0%, /* Light purple */
+        rgba(230, 230, 255, 0.6) 50%, /* Even lighter purple */
+        rgba(255, 255, 255, 0.3) 100% /* Fade to white */
+    ); /* Gradient background */
+    border-radius: 15px; /* Rounded corners */
+    padding: 40px 60px; /* Space inside the gradient */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 80%; /* Limit width */
+    margin: auto; /* Center horizontally and vertically */
+}
+
+/* Mit TEC Forløb Header */
+.mit-tec-forlob {
+    text-align: center;
+    margin-bottom: 20px; /* Space between text and buttons */
+    font-size: 48px; /* Larger font size */
+    font-weight: bold;
+    color: #5C2D91; /* Purple text for contrast */
+}
+
+/* Button Group */
 .button-group {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 30px; /* Add space between buttons */
 }
 
-/* Style for the main buttons (EUD and EUX) */
+/* Main Buttons (EUD and EUX) */
 .main-button {
-    background-color: #5C2D91; /* Purple color */
-    color: white;
+    background-color: #5C2D91; /* Purple buttons */
+    color: white; /* White text for contrast */
     border: none;
-    padding: 25px 50px; /* Increased padding for larger buttons */
-    margin: 20px 0;     /* Adds more space between the two buttons */
-    border-radius: 10px;
-    font-size: 20px;    /* Increases font size for larger buttons */
+    padding: 40px 80px; /* Larger buttons */
+    border-radius: 12px;
+    font-size: 28px; /* Larger text on buttons */
+    font-weight: bold;
     cursor: pointer;
     position: relative;
-    overflow: hidden; /* Ensures shine effect stays within the button */
+    overflow: hidden; /* Keep hover effects within button bounds */
+    transition: transform 0.2s ease-in-out, background-color 0.2s; /* Smooth hover effect */
 }
 
-/* Shine effect overlay for main buttons */
+.main-button:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    background-color: #8041c6; /* Lighter purple on hover */
+}
+
+/* Shine Effect for Buttons */
 .main-button::before {
     content: "";
     position: absolute;
     top: 0;
-    left: -100%; /* Starts off-screen to the left */
+    left: -100%; /* Start off-screen */
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.4); /* Semi-transparent white for shine */
-    transform: skewX(-45deg); /* Creates a skewed shine effect */
-    transition: all 0.4s ease; /* Duration of the shine animation */
-    opacity: 0; /* Invisible initially */
+    background: rgba(255, 255, 255, 0.4); /* Semi-transparent white */
+    transform: skewX(-45deg);
+    transition: all 0.4s ease;
+    opacity: 0;
 }
 
-/* Animate the shine effect on hover for main buttons */
 .main-button:hover::before {
-    left: 100%; /* Moves the shine from left to right */
-    opacity: 1; /* Becomes visible only on hover */
-}
-
-/* Login button styling, positioned further down */
-.login-section {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px; /* Adds more space to position this button lower on the page */
-}
-
-/* Style for the login button */
-.login-button {
-    background-color: #5C2D91; /* Purple color */
-    color: white;
-    border: none;
-    padding: 25px 50px; /* Increased padding for a larger login button */
-    border-radius: 10px;
-    font-size: 20px; /* Increases font size for consistency */
-    cursor: pointer;
-    position: relative;
-    overflow: hidden; /* Ensures shine effect stays within the button */
-}
-
-/* Shine effect overlay for login button */
-.login-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%; /* Starts off-screen to the left */
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.4); /* Semi-transparent white for shine */
-    transform: skewX(-45deg); /* Creates a skewed shine effect */
-    transition: all 0.4s ease; /* Duration of the shine animation */
-    opacity: 0; /* Invisible initially */
-}
-
-/* Animate the shine effect on hover for login button */
-.login-button:hover::before {
-    left: 100%; /* Moves the shine from left to right */
-    opacity: 1; /* Becomes visible only on hover */
-}
-
-
-.mit-tec-forlob {
-    text-align: center;
-    margin: 20px 0; /* Adjust spacing above and below */
-    font-size: 24px; /* Adjust font size */
-    color: #ffffff; /* Match the purple color of the buttons */
-    font-weight: bold;
+    left: 100%; /* Move shine effect from left to right */
+    opacity: 1; /* Make shine visible on hover */
 }

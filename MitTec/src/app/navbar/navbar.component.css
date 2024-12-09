@@ -1,19 +1,19 @@
 .NavBar {
+    position: fixed;
+    top: 0; /* Stick navbar to the top */
     height: 50px; /* Allow navbar height to adjust based on content */
     width: 100%; /* Fill the entire width of the page */
-    background-color: #333; /* Dark background color */
+    background-color: #5C2D91; /* Purple background color */
     display: flex;
     justify-content: space-between; /* Space out the logo and links */
     align-items: center; /* Vertically center the items */
-    padding: 0 40px; /* Increased padding to make the navbar fill more space horizontally (adjust as needed) */
-    color: white;
-    position: sticky;
-    top: 0; /* Stick navbar to the top */
+    padding: 0 30px 0 10px; /* 0 for top and bottom, 10px left, 30px right */
+    color: white;    
     z-index: 1000; /* Ensure the navbar stays on top */
     box-sizing: border-box; /* Include padding in width and height calculation */
     overflow: hidden; /* Prevent any overflow from happening */
   }
-  
+
   .navbar-logo svg {
     width: 100px;
     height: auto;
@@ -35,7 +35,7 @@
   }
   
   .nav-links a:hover {
-    color: #f39c12; /* Highlight color for hover */
+    color: #c081f3; /* Highlight color for hover */
   }
   
   /* Mobile Styles */
