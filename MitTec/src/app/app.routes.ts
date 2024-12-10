@@ -6,6 +6,7 @@ import { CoursePageComponent } from './course-page/course-page.component';
 import { LoginComponent } from './login/login.component';
 import { SubjPageComponent } from './subj-page/subj-page.component';
 import { PraktikPageComponent } from './praktik-page/praktik-page.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'subj/:courseId/:courseTitle', component: SubjPageComponent },
   { path: 'praktik/:courseId/:courseName', component: PraktikPageComponent },
   { path: 'login', component: LoginComponent },  // Login page 
+  {path: 'register',component:RegisterComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' } // Default route
   // Add other routes here as needed
 ];

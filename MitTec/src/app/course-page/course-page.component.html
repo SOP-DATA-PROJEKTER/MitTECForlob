@@ -8,7 +8,7 @@
   </div>
 
   <div *ngIf="!loading && courseData.length > 0">
-    <h2>Courses for {{ specsTitle }}</h2>
+    <h2>Forløb for {{ specsTitle }}</h2>
 
     <!-- Loop through the courseData and display each course -->
     <div *ngFor="let course of courseData" class="course-card" [routerLink]="getRouterLink(course)">
