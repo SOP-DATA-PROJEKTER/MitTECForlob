@@ -17,7 +17,7 @@ namespace Logic.Models
         public string SpecsName { get; set; }
         public string Description {  get; set; }
         [AllowNull]
-        public List<Course>? Courses { get; set; }
+        public  List<Course>? Courses { get; set; }
         public string Duration { get; set; }
         public bool EuxAvailability { get; set; }
         // Foreign key to Education

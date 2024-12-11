@@ -27,12 +27,12 @@ namespace MitTecForlob.Server.Controllers
         {
             try
             {
-                var education = await _notes.GetById(id);
-                if (education == null)
+                var notes = await _notes.GetById(id);
+                if (notes == null)
                 {
                     return NotFound();
                 }
-                return education;
+                return notes;
             }
             catch (Exception ex)
             {

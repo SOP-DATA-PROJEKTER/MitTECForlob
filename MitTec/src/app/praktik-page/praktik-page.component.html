@@ -1,48 +1,65 @@
 <div class="praktik-container">
-  <h2 class="course-name">Praktik Detaljer for {{courseName}}</h2>
+  <h2 class="course-name">Praktik Detaljer for {{ courseName }}</h2>
 
   <!-- Loading Spinner -->
   <div *ngIf="loading">
-      <p>Loading praktik details...</p>
+    <p>Loading praktik details...</p>
   </div>
 
   <!-- Error Message -->
   <div *ngIf="error">
-      <p>{{ error }}</p>
+    <p>{{ error }}</p>
   </div>
 
   <!-- Display the praktik data -->
   <div *ngIf="!loading && praktik.length > 0">
-      <div class="praktik-card">
-          <!-- Loop through praktik data and display each item -->
-          <div *ngFor="let item of praktik" class="praktik-item">
+    <div class="praktik-card">
+      <!-- Loop through praktik data and display each item -->
+      <div *ngFor="let item of praktik" class="praktik-item">
 
-              <!-- Description Box -->
-              <div class="description-box">
-                  <h2>Praktik Mål:</h2>
-                  <p>{{ item?.description || 'No description available.' }}</p>
-              </div>
+        <!-- Description Box -->
+        <div 
+          class="description-box" 
+          [ngClass]="{ 'all-checked': areAllGoalsChecked() }"
+        >
+          <h2>Praktik Mål:</h2>
 
-<!-- Notes Input -->
-<div class="notes-input">
-  <label for="notes">Your Notes:</label>
-  <textarea
-    id="notes"
-    [(ngModel)]="userNotes"
-    rows="4"
-    cols="50"
-    placeholder="Write your notes here...">
-  </textarea>
+          <!-- Split description by "*" and create checkboxes for each goal -->
+          <div *ngIf="item?.description">
+            <div *ngFor="let goal of splitDescription(item?.description); let i = index" class="checkbox-container">
+              <input 
+                type="checkbox" 
+                id="goal-{{ goal }}" 
+                [(ngModel)]="goalsChecked[i]" 
+              />
+              <label for="goal-{{ goal }}">{{ goal.trim() || 'No description available.' }}</label>
+            </div>
+          </div>
+        </div>
 
-  <!-- Download Notes as PDF Button -->
-  <div class="download-pdf-button">
-    <button (click)="downloadNotesAsPDF()">Download Notes as PDF</button>
+        <!-- Notes Input -->
+        <div class="notes-input">
+          <label for="notes">Your Notes:</label>
+          <textarea
+            id="notes"
+            [(ngModel)]="userNotes"
+            rows="4"
+            cols="50"
+            placeholder="Write your notes here..."
+          ></textarea>
+
+          <!-- Download Notes as PDF Button -->
+          <div class="download-pdf-button">
+            <button (click)="downloadNotesAsPDF()">Download Notes as PDF</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
-</div>
-
 
   <!-- If no data available -->
   <ng-template #noData>
-      <p>No praktik details available.</p>
+    <p>No praktik details available.</p>
   </ng-template>
 </div>

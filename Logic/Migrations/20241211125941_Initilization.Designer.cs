@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Logic.Migrations
 {
     [DbContext(typeof(DBcontext))]
-    [Migration("20241204122632_added_InternshipGoals")]
-    partial class added_InternshipGoals
+    [Migration("20241211125941_Initilization")]
+    partial class Initilization
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -109,6 +109,35 @@ namespace Logic.Migrations
                     b.ToTable("InternshipGoal");
                 });
 
+            modelBuilder.Entity("Logic.Models.InternshipGoalCheck", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CourseId")
+                        .HasColumnType("int");
+
+                    b.PrimitiveCollection<string>("Goals")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId")
+                        .IsUnique()
+                        .HasFilter("[CourseId] IS NOT NULL");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("InternshipGoalCheck");
+                });
+
             modelBuilder.Entity("Logic.Models.Notes", b =>
                 {
                     b.Property<int>("Id")
@@ -128,6 +157,9 @@ namespace Logic.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CourseId")
+                        .IsUnique();
 
                     b.HasIndex("UserId");
 
@@ -205,30 +237,30 @@ namespace Logic.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CourseId")
-                        .HasColumnType("int");
+                    b.Property<string>("Course")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EducationId")
-                        .HasColumnType("int");
+                    b.Property<string>("Education")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SpecsId")
-                        .HasColumnType("int");
+                    b.Property<string>("Specs")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("EducationId");
-
-                    b.HasIndex("SpecsId");
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("User");
                 });
@@ -260,8 +292,27 @@ namespace Logic.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Logic.Models.InternshipGoalCheck", b =>
+                {
+                    b.HasOne("Logic.Models.Course", null)
+                        .WithOne("InternshipGoalCheck")
+                        .HasForeignKey("Logic.Models.InternshipGoalCheck", "CourseId");
+
+                    b.HasOne("Logic.Models.User", null)
+                        .WithMany("InternshipGoalCheck")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Logic.Models.Notes", b =>
                 {
+                    b.HasOne("Logic.Models.Course", null)
+                        .WithOne("Notes")
+                        .HasForeignKey("Logic.Models.Notes", "CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Logic.Models.User", null)
                         .WithMany("Notes")
                         .HasForeignKey("UserId")
@@ -287,30 +338,13 @@ namespace Logic.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Logic.Models.User", b =>
-                {
-                    b.HasOne("Logic.Models.Course", "Course")
-                        .WithMany()
-                        .HasForeignKey("CourseId");
-
-                    b.HasOne("Logic.Models.Education", "Education")
-                        .WithMany()
-                        .HasForeignKey("EducationId");
-
-                    b.HasOne("Logic.Models.Specs", "Specs")
-                        .WithMany()
-                        .HasForeignKey("SpecsId");
-
-                    b.Navigation("Course");
-
-                    b.Navigation("Education");
-
-                    b.Navigation("Specs");
-                });
-
             modelBuilder.Entity("Logic.Models.Course", b =>
                 {
                     b.Navigation("InternshipGoal");
+
+                    b.Navigation("InternshipGoalCheck");
+
+                    b.Navigation("Notes");
 
                     b.Navigation("SubjectList");
                 });
@@ -328,6 +362,8 @@ namespace Logic.Migrations
             modelBuilder.Entity("Logic.Models.User", b =>
                 {
                     b.Navigation("AdminKeys");
+
+                    b.Navigation("InternshipGoalCheck");
 
                     b.Navigation("Notes");
                 });

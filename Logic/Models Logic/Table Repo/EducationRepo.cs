@@ -20,17 +20,23 @@ namespace Logic.Models_Logic.Table_Repo
 
         public async Task<Education> GetByEduationName(string educationname)
         {
-            return await context.Education.FirstOrDefaultAsync(Education => Education.EducationName == educationname);
+            return await context.Education
+                .Include(ele=>ele.Specs)
+                .FirstOrDefaultAsync(Education => Education.EducationName == educationname);
         }
         public async Task<Education> GetById(int id)
         {
-            return await context.Education.FirstOrDefaultAsync(Education => Education.Id == id);
+            return await context.Education
+                .Include(ele=>ele.Specs)
+                .FirstOrDefaultAsync(Education => Education.Id == id);
         }
         public async Task<List<Education>> GetAllEducations()
         {
             try
             {
-                return await context.Education.ToListAsync();
+                return await context.Education
+                    .Include(ele=>ele.Specs)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {

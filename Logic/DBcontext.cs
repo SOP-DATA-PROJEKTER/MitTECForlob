@@ -18,6 +18,15 @@ namespace Logic
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=MitTECForloeb;Trusted_Connection=True;");
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Apply unique constraint on Email
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)  // Specify the property to apply the index
+                .IsUnique();  // Ensure it's unique
+        }
         public DbSet<AdminKeys> AdminKeys { get; set; }
             public DbSet<Education> Education { get; set; }
             public DbSet<Notes> Notes { get; set; }
@@ -25,6 +34,7 @@ namespace Logic
             public DbSet<User> User { get; set; }
             public DbSet<Specs> Specs { get; set; }
             public DbSet<Subj> Subj { get; set; }
-        public DbSet<InternshipGoal> InternshipGoal { get; set; }
+            public DbSet<InternshipGoal> InternshipGoal { get; set; }
+            public DbSet<InternshipGoalCheck> InternshipGoalCheck { get; set; }
     }
 }

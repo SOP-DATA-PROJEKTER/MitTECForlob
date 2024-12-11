@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-specs-page',
   standalone: true,
-  imports: [CommonModule,RouterModule, HttpClientModule], // Import HttpClientModule for HTTP requests
+  imports: [CommonModule, RouterModule, HttpClientModule], // Import HttpClientModule for HTTP requests
   templateUrl: './course-page.component.html',
   styleUrls: ['./course-page.component.css']
 })
@@ -48,40 +48,55 @@ export class CoursePageComponent implements OnInit {
       }
     );
   }
-  
+
+  // Method to generate the router link dynamically
+  getRouterLink(course: any): string[] {
+    // Check if courseName contains 'SOP' (for PraktikForløb) or 'H' (for HovedForløb)
+    if (course.courseName && course.courseName.toLowerCase().startsWith('sop')) {
+      // Return router link for 'praktik' route
+      return ['/praktik', course.id, course.courseName]; // Navigate to the PraktikPageComponent
+    }
+    else if (course.courseName && course.courseName.toLowerCase().startsWith('h')) {
+      // Return router link for 'subj' route
+      return ['/subj', course.id, course.courseName]; // Navigate to the SubjPageComponent
+    } else {
+      return ['/default-page']; // Fallback route if neither condition is met
+    }
+  }
+
   organizeAndIntertwineCourses(courses: any[]): any[] {
     const praktikForlob: any[] = [];
     const hovedForlob: any[] = [];
-  
+
     // Split courses into categories based on courseName (praktikforløb or hovedeforløb)
     courses.forEach(course => {
-      const courseNameLower = course.courseName?.toLowerCase() || '';  // Convert to lowercase for easier comparison
-      course.courseName = courseNameLower;  // Ensure courseName is lowercase for consistency
-  
-      if (courseNameLower.startsWith('praktikforløb')) {
-        praktikForlob.push(course);
-      } else if (courseNameLower.startsWith('hovedeforløb')) {
-        hovedForlob.push(course);
+      const courseNameLower = (course.courseName?.toLowerCase() || '').trim();  // Convert to lowercase for easier comparison
+
+      // Check if the course name starts with 'sop' for PraktikForløb or 'h' for HovedForløb
+      if (courseNameLower.startsWith('sop')) {
+        praktikForlob.push(course);  // Add to PraktikForløb
+      } else if (courseNameLower.startsWith('h')) {
+        hovedForlob.push(course);  // Add to HovedForløb
       }
     });
-  
+
     console.log('praktikForlob:', praktikForlob);  // Check the split data
     console.log('hovedForlob:', hovedForlob);  // Check the split data
-  
-    // Sort the courses based on their number after the dash (e.g., PraktikForløb-1, HovedeForløb-1, etc.)
+
+    // Sort the courses based on their number after the prefix (e.g., SOP1, H1, SOP2, H2)
     const extractNumber = (name: string): number => {
-      const match = name.match(/\d+/);
-      return match ? parseInt(match[0], 10) : 0;  // Extract the number from course name
+      const match = name.match(/\d+/);  // Match all digits in the name (e.g., 'SOP1' -> 1, 'H2' -> 2)
+      return match ? parseInt(match[0], 10) : 0;  // Extract the number from the name and parse it
     };
-  
-    // Sort both arrays by the number after the dash
+
+    // Sort both arrays by the number after the prefix
     praktikForlob.sort((a, b) => extractNumber(a.courseName) - extractNumber(b.courseName));
     hovedForlob.sort((a, b) => extractNumber(a.courseName) - extractNumber(b.courseName));
-  
-    // Intertwine the courses by alternating between PraktikForløb and HovedeForløb
+
+    // Intertwine the courses by alternating between PraktikForløb and HovedForløb
     const intertwinedCourses: any[] = [];
     const maxLength = Math.max(praktikForlob.length, hovedForlob.length);
-  
+
     // Alternate between praktikforløb and hovedeforløb courses
     for (let i = 0; i < maxLength; i++) {
       if (i < praktikForlob.length) {
@@ -91,22 +106,8 @@ export class CoursePageComponent implements OnInit {
         intertwinedCourses.push(hovedForlob[i]);
       }
     }
-  
+
     console.log('Intertwined courses:', intertwinedCourses);  // Verify the final output
     return intertwinedCourses;
   }
-  getRouterLink(course: any): string[] {
-    // Check if courseName contains 'praktikforløb'
-    if (course.courseName && course.courseName.toLowerCase().includes('praktikforløb')) {
-      return ['/praktik', course.id, course.courseName]; // Navigate to the praktik page
-    }
-    // Check if courseName contains 'hovedeforløb'
-    else if (course.courseName && course.courseName.toLowerCase().includes('hovedeforløb')) {
-      return ['/subj', course.id, course.courseName]; // Navigate to the subj page
-    } else {
-      return ['/default-page']; // Fallback route if neither condition is met
-    }
-  }
-  
-  
 }

@@ -3,69 +3,53 @@ using Logic.Interfaces;
 using Logic.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace MitTecForlob.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class InternshipGoalCheckController : ControllerBase
     {
-        private readonly INotes _notes;
         private readonly IInternshipGoalCheck _internshipGoalCheck;
         private readonly IUser _user;
+        private readonly ICourse _course;
         private readonly IDataCollection _context;
-        public UserController(IDataCollection c)
+        public InternshipGoalCheckController(IDataCollection c)
         {
-            _notes = c.Notes;
-            _user = c.User;
             _internshipGoalCheck = c.InternshipGoalCheck;
+            _user = c.User;
+            _course = c.Course;
             _context = c;
         }
         #region GET Requests
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        [HttpGet("{courseid}/{email}")]
+        public async Task<ActionResult<InternshipGoalCheck>> GetByEmailAndCourseId(int courseid, string email)
         {
             try
             {
-                var user = await _user.GetById(id);
-                if (user == null)
+                InternshipGoalCheck tmp = await _internshipGoalCheck.GetByCourseAndUser(courseid, email);
+                if (tmp == null)
                 {
                     return NotFound();
                 }
-                return user;
+                return Ok(tmp);
             }
             catch (Exception ex)
             {
-
-                return BadRequest();
-            }
-
-        }
-        [HttpGet("Getby{email}")]
-        public async Task<ActionResult<User>> GetUserByEmail(string email)
-        {
-            try
-            {
-                var user = await _user.GetByEmail(email);
-                if (user == null)
-                {
-                    return NotFound();
-                }
-                return user;
-            }
-            catch (Exception ex)
-            {
+                // Optionally log the exception
                 return BadRequest();
             }
         }
+
         #endregion
         #region POST Requests
-        [HttpPost("CreateUser")]
-        public async Task<HttpStatusCode> CreateUser(User user)
+        [HttpPost("CreateInternshipGoalCheck")]
+        public async Task<HttpStatusCode> CreateInternshipGoalCheck(InternshipGoalCheck tmp)
         {
             try
             {
-                await _user.Create(user);
+                await _internshipGoalCheck.Create(tmp);
             }
             catch (Exception ex)
             {
@@ -75,12 +59,12 @@ namespace MitTecForlob.Server.Controllers
         }
         #endregion
         #region PUT Requests
-        [HttpPut("UpdateUser")]
-        public async Task<HttpStatusCode> UpdateUser(User user)
+        [HttpPut("UpdateInternshipGoalCheck")]
+        public async Task<HttpStatusCode> UpdateInternshipGoalCheck(InternshipGoalCheck tmp)
         {
             try
             {
-                await _user.Update(user);
+                await _internshipGoalCheck.Update(tmp);
             }
             catch (Exception ex)
             {
@@ -90,12 +74,12 @@ namespace MitTecForlob.Server.Controllers
         }
         #endregion
         #region DELETE Requests
-        [HttpDelete("DeleteUser")]
-        public async Task<HttpStatusCode> DeleteUser(User user)
+        [HttpDelete("DeleteInternshipGoalCheck")]
+        public async Task<HttpStatusCode> DeleteInternshipGoalCheck(InternshipGoalCheck tmp)
         {
             try
             {
-                await _user.Delete(user);
+                await _internshipGoalCheck.Delete(tmp);
             }
             catch (Exception ex)
             {

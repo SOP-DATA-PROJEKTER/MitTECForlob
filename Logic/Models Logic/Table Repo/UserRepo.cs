@@ -19,17 +19,23 @@ namespace Logic.Models_Logic.Table_Repo
 
         public async Task<User> GetByEmail(string email)
         {
-            return await context.User.FirstOrDefaultAsync(Users => Users.Email == email);
+            return await context.User
+                .Include(ele => ele.Notes)
+                .FirstOrDefaultAsync(Users => Users.Email == email);
         }
         public async Task<User> GetById(int id)
         {
-            return await context.User.FirstOrDefaultAsync(Users => Users.Id == id);
+            return await context.User
+                .Include(ele => ele.Notes)
+                .FirstOrDefaultAsync(Users => Users.Id == id);
         }
         public async Task<List<User>> GetListOfUsers()
         {
             try
             {
-                return await context.User.ToListAsync();
+                return await context.User
+                    .Include(ele => ele.Notes)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
@@ -47,43 +53,9 @@ namespace Logic.Models_Logic.Table_Repo
                 return false;
             }
 
-            if (ValidatePassword(loginObject.Password, UserFromDatabase.Password))
-            {
-                return true;
-            }
 
             return false;
 
-        }
-        public bool ValidatePassword(string HashedPasswordAttempt, string PasswordHashFromDatabase)
-        {
-            try
-            {
-                byte[] HashedPasswordAttemptBase64Decoded = Convert.FromBase64String(HashedPasswordAttempt);
-                byte[] PasswordHashFromDatabaseBase64Decoded = Convert.FromBase64String(PasswordHashFromDatabase);
-
-                if (CompareByteArrays(HashedPasswordAttemptBase64Decoded, PasswordHashFromDatabaseBase64Decoded))
-                {
-                    return true;
-                }
-
-                return false;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-        private bool CompareByteArrays(byte[] A, byte[] B)
-        {
-            for (int i = 0; i < A.Length; i++)
-            {
-                if (A[i] != B[i])
-                {
-                    return false;
-                }
-            }
-            return true;
         }
     }
 }

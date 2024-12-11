@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 
 namespace Logic.Models
 {
@@ -19,14 +20,13 @@ namespace Logic.Models
         [Required]
         public string Password { get; set; }
         [AllowNull]
-        public virtual AdminKeys? AdminKeys { get; set; }
+        public AdminKeys? AdminKeys { get; set; }
+        public string Education { get; set; }
+        public string Specs { get; set; }
+        public string Course { get; set; }
         [AllowNull]
-        public virtual Education? Education { get; set; }
+        public List<Notes>? Notes { get; set; }
         [AllowNull]
-        public virtual Specs? Specs { get; set; }
-        [AllowNull]
-        public virtual Course? Course { get; set; }
-        [AllowNull]
-        public virtual List<Notes>? Notes { get; set; }
+        public List<InternshipGoalCheck>? InternshipGoalCheck { get; set; }
     }
 }

@@ -18,7 +18,10 @@ namespace Logic.Models_Logic.Table_Repo
         } // Dependency Injection - DI
         public async Task<Course> GetById(int id)
         {
-            return await context.Course.FirstOrDefaultAsync(Progress => Progress.Id == id);
+            return await context.Course
+                .Include(ele => ele.InternshipGoal)
+                .Include(ele => ele.SubjectList)
+                .FirstOrDefaultAsync(Course => Course.Id == id);
         }
         public async Task<List<Course>> GetAllCourses()
         {

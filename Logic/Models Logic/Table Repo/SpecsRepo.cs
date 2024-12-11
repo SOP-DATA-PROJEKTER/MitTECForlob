@@ -20,7 +20,7 @@ namespace Logic.Models_Logic.Table_Repo
         {
             try
             {
-                return await context.Specs.ToListAsync();
+                return await context.Specs.Include(ele => ele.Courses).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -32,7 +32,9 @@ namespace Logic.Models_Logic.Table_Repo
         {
             try
             {
-                return await context.Specs.Where(Specs => Specs.EducationId == educationId).ToListAsync();
+                return await context.Specs
+                    .Include(ele=>ele.Courses)
+                    .Where(Specs => Specs.EducationId == educationId).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -42,12 +44,16 @@ namespace Logic.Models_Logic.Table_Repo
 
         public async Task<Specs> GetById(int id)
         {
-            return await context.Specs.FirstOrDefaultAsync(Specs => Specs.Id == id);
+            return await context.Specs
+                .Include(ele => ele.Courses)
+                .FirstOrDefaultAsync(Specs => Specs.Id == id);
         }
 
         public async Task<Specs> GetBySpecsName(string specsname)
         {
-            return await context.Specs.FirstOrDefaultAsync(Specs => Specs.SpecsName == specsname);
+            return await context.Specs
+                .Include(ele => ele.Courses)
+                .FirstOrDefaultAsync(Specs => Specs.SpecsName == specsname);
         }
     }
 }

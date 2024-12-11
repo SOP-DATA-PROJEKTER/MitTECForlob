@@ -1,12 +1,15 @@
 <div class="course-container">
+  <!-- Loading message -->
   <div *ngIf="loading">
     <p>Loading courses...</p>
   </div>
 
+  <!-- Error message -->
   <div *ngIf="error">
     <p>{{ error }}</p>
   </div>
 
+  <!-- Display courses when available -->
   <div *ngIf="!loading && courseData.length > 0">
     <h2>Forløb for {{ specsTitle }}</h2>
 
@@ -16,7 +19,8 @@
     </div>
   </div>
 
-  <ng-template #noData>
+  <!-- Show a message when no courses are available -->
+  <ng-container *ngIf="!loading && courseData.length === 0">
     <p>No courses available for this specification.</p>
-  </ng-template>
+  </ng-container>
 </div>

@@ -21,6 +21,8 @@ namespace Logic.Models
         public InternshipGoal? InternshipGoal { get; set; }
         [AllowNull]
         public Notes? Notes { get; set; }
+        [AllowNull]
+        public InternshipGoalCheck? InternshipGoalCheck { get; set; }
         [ForeignKey("Specs")]
         [AllowNull]
         public int SpecsId { get; set; }
